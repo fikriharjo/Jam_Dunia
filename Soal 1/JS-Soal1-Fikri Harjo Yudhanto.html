@@ -1,0 +1,95 @@
+<html>
+    <head>
+        <title>
+            Exam Purwadhika
+        </title>
+    </head>
+    <body onload="jam_dunia()">
+        <center>
+            <h1>
+                Jam Dunia
+            </h1>
+        </center>
+        <div>
+            <div id='jam'></div>
+        </div>
+        <script>
+            function jam_dunia(){
+                var date    = new Date();
+                var detik   = date.getSeconds();
+                var menit   = date.getMinutes();
+                var jam     = date.getHours();
+                var html    = '';
+                var a = 0;
+                while(a < 10){
+                    a++;
+                    detik = Number(detik)+1;
+                    if(detik > 59){
+                        detik = detik-60;
+                        menit = Number(menit)+1;
+                    }
+                    detik = String(detik);
+                    if(detik.length < 2){
+                        detik = '0'+detik;
+                    }
+
+                    menit = Number(menit)+1;
+                    if(menit > 59){
+                        menit   = menit-60;
+                        jam     = Number(jam)+1;
+                    }
+                    menit = String(menit);
+                    if(menit.length < 2){
+                        menit = '0'+menit;
+                    }
+
+                    jam = Number(jam)+1;
+                    if(jam > 23){
+                        jam = jam-24;
+                    }
+                    jam = String(jam);
+                    if(jam.length < 2){
+                        jam = '0'+jam;
+                    }
+
+                    var keterangan;
+                    switch (true) {
+                        case a == 1:
+                            keterangan = 'GMT+'+(Number(a)-1)+' London, Inggris';
+                            break;
+                        case a == 2:
+                            keterangan = 'GMT+'+(Number(a)-1)+' Paris, Perancis';
+                            break;
+                        case a == 3:
+                            keterangan = 'GMT+'+(Number(a)-1)+' Istanbul, Turki';
+                            break;
+                        case a == 4:
+                            keterangan = 'GMT+'+(Number(a)-1)+' Moskow, Rusia';
+                            break;
+                        case a == 5:
+                            keterangan = 'GMT+'+(Number(a)-1)+' Abu Dhabi, UEA';
+                            break;
+                        case a == 6:
+                            keterangan = 'GMT+'+(Number(a)-1)+' Islamabad, Pakistan';
+                            break;
+                        case a == 7:
+                            keterangan = 'GMT+'+(Number(a)-1)+' Astana, Kazakhstan';
+                            break;
+                        case a == 8:
+                            keterangan = 'GMT+'+(Number(a)-1)+' Jakarta, Indonesia';
+                            break;
+                        case a == 9:
+                            keterangan = 'GMT+'+(Number(a)-1)+' Beijing, China';
+                            break;
+                        default:
+                        keterangan = 'GMT+'+(Number(a)-1)+' Tokyo, Jepang';
+                            break;
+                    }
+                    html += jam+':'+menit+':'+detik+'* &nbsp&nbsp'+keterangan+'<br>';
+                }
+
+                document.getElementById('jam').innerHTML = html;
+            }
+        </script>
+    </body>
+</html>
