@@ -4,7 +4,7 @@
             Exam Purwadhika
         </title>
     </head>
-    <body onload="jam_dunia()">
+    <body onload="ulangi()">
         <center>
             <h1>
                 Jam Dunia
@@ -14,11 +14,25 @@
             <div id='jam'></div>
         </div>
         <script>
+            function ulangi(){
+                setInterval(
+                    jam_dunia,1000);
+            }
             function jam_dunia(){
                 var date    = new Date();
                 var detik   = date.getSeconds();
                 var menit   = date.getMinutes();
                 var jam     = date.getHours();
+                if(jam < 6){
+                    jam = jam+24;
+                }
+                jam = jam-7;
+
+                if(detik < 2){
+                    detik = detik+59;
+                }
+                detik = detik-2;
+
                 var html    = '';
                 var a = 0;
                 while(a < 10){
